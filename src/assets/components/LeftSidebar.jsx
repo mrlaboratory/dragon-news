@@ -17,7 +17,7 @@ const LeftSidebar = () => {
                 <h2>All Catgeories</h2>
                 <div className='text-[#9F9F9F]'>
                     {
-                        categories.map(item => <p><Link to={`/category/${item.id}`}>{item.name}</Link></p>)
+                        categories.map((item,i) => <p><Link key={i} to={`/category/${item.id}`}>{item.name}</Link></p>)
                     }
                 </div>
             </div>

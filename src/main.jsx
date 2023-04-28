@@ -6,6 +6,8 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import About from './assets/Pages/About'
 import Home from './assets/Pages/Home'
 import Contact from './assets/Pages/Contact'
+import Category from './assets/Pages/Category'
+import News from './assets/Pages/News'
 
 const router = createBrowserRouter([
   {
@@ -19,18 +21,27 @@ const router = createBrowserRouter([
 
       },
       {
-        path:'/about',
-        element : <About></About>
+        path:'/category/:id',
+        element : <Category></Category>,
+        loader : ({params}) => fetch(`http://localhost:3000/category/${params.id}`)
       },
       {
-        path:'/contact',
-        element : <Contact></Contact>
+        path:'/news/:id',
+        element : <News></News>,
+        loader : ({params}) => fetch(`http://localhost:3000/news/${params.id}`)
       }
 
     ]
     
   },
- 
+  {
+    path:'/about',
+    element : <About></About>
+  },
+  {
+    path:'/contact',
+    element : <Contact></Contact>
+  },
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(

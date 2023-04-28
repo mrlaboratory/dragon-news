@@ -21,11 +21,11 @@ const Header = () => {
 
             </div>
             <div className="navbar bg-base-100 mt-5 flex justify-between">
-                <div className="flex-none">
+                <div className="flex justify-center">
                     <ul className="menu menu-horizontal px-1">
-                        <li> <NavLink className="btn btn-sm text-white mr-2" to='/'>Home</NavLink> </li>
-                        <li> <NavLink className="btn btn-sm text-white mr-2" to='/about'>About</NavLink> </li>
-                        <li> <NavLink className="btn btn-sm text-white mr-2" to='/contact'>Contact</NavLink> </li>
+                        <li> <NavLink className="btn  text-white mr-2" to='/'>Home</NavLink> </li>
+                        <li> <NavLink className="btn  text-white mr-2" to='/about'>About</NavLink> </li>
+                        <li> <NavLink className="btn  text-white mr-2" to='/contact'>Contact</NavLink> </li>
                     </ul>
                 </div>
                 <div className="flex-none gap-2">
