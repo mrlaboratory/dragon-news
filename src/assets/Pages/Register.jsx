@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import AuthProvider, { AuthContext } from '../components/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 import { Link, useLocation } from 'react-router-dom';
@@ -8,6 +8,10 @@ const Register = () => {
 const {user} = useContext(AuthContext)
   const { createUser } = useContext(AuthContext)
 const location = useLocation()
+const [accepted,setAccepted] = useState(false)
+const handleAccepted = e => {
+  setAccepted(e.target.checked)
+}
 console.log(location)
   const signUpUser = (e) => {
     e.preventDefault()
@@ -73,8 +77,14 @@ console.log(location)
                 <Link to='/login' className="label-text-alt link link-hover">You have a account ? </Link>
               </label>
             </div>
+            <div className="form-control">
+  <label className="cursor-pointer label">
+    <span className="label-text">Accept TAC </span>
+    <input onChange={handleAccepted} type="checkbox" required className="checkbox checkbox-accent" />
+  </label>
+</div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Create Account</button>
+              <button disabled={!accepted} className="btn btn-primary">Create Account</button>
             </div>
           </form>
         </div>
