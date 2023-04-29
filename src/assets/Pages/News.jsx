@@ -4,6 +4,7 @@ import moment from 'moment';
 import {  FaBookmark, FaLongArrowAltLeft, FaShare } from 'react-icons/fa';
 
 const News = () => {
+
     const  { _id, title, details, rating,  image_url, total_view, author,category_id   }  = useLoaderData()
  
     return (

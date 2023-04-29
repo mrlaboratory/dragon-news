@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 
 const NewsCard = (props) => {
-    console.log(props)
+    // console.log(props)
     const { _id, title, details, rating,  image_url, total_view, author } = props
     return (
         <div className='border border-spacing-2 rounded-lg '>

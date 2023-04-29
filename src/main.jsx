@@ -2,12 +2,19 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom'
 import About from './assets/Pages/About'
 import Home from './assets/Pages/Home'
 import Contact from './assets/Pages/Contact'
 import Category from './assets/Pages/Category'
 import News from './assets/Pages/News'
+import Login from './assets/Pages/Login'
+import Register from './assets/Pages/Register'
+import Signup from './assets/Pages/Register'
+import AuthProvider from './assets/components/AuthProvider'
+import Dashboard from './assets/Pages/Dashboard'
+import Pages from './assets/Pages/Pages'
+import PrivateRoute from './assets/components/PrivateRoute'
 
 const router = createBrowserRouter([
   {
@@ -17,7 +24,7 @@ const router = createBrowserRouter([
     children : [
       {
         path:'/',
-        element : <Home></Home>
+        element : <Navigate to='/category/0'></Navigate>
 
       },
       {
@@ -27,9 +34,21 @@ const router = createBrowserRouter([
       },
       {
         path:'/news/:id',
-        element : <News></News>,
+        element : <PrivateRoute><News></News></PrivateRoute>,
         loader : ({params}) => fetch(`http://localhost:3000/news/${params.id}`)
+      },
+      {
+        path:'/login',
+        element : <Login></Login>
+      },
+      {
+        path:'/register',
+        element : <Register></Register>
+      },  {
+        path:'/dashboard',
+        element : <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
       }
+    
 
     ]
     
@@ -42,8 +61,12 @@ const router = createBrowserRouter([
     path:'/contact',
     element : <Contact></Contact>
   },
+ 
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
- <RouterProvider router={router}></RouterProvider>
+<AuthProvider>
+<RouterProvider router={router}></RouterProvider>
+</AuthProvider>
+
 )

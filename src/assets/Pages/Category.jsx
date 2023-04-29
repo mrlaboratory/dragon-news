@@ -5,7 +5,7 @@ import NewsCard from '../components/NewsCard';
 const Category = () => {
     const data = useLoaderData()
 
-    console.log(data)
+    // console.log(data)
     return (
         <div>
             <h2 className='text-xl font-bold text-center'>This is category : {data.length}</h2>
